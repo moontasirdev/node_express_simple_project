@@ -10,11 +10,17 @@ app.set('view engine', 'jade');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extented: false}));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
     console.log('current route is home');
-    res.render('index');
-})
+    res.render('index', {title: 'Welcome'});
+});
+
+app.get('/about', function (req, res) {
+    console.log('current route is home');
+    res.render('about');
+});
 
 app.listen(3000);
 console.log("App is running on port 3000");
